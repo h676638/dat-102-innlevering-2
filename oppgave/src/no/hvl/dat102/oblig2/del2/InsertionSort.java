@@ -21,22 +21,40 @@ public class InsertionSort<T extends Comparable<T>>{
 			list[0] = list[lowest];
 			list[lowest] = tempT;
 		}
-		for (int i = index; i<list.length; i++) {
+		for (int i = index; i<list.length; i += 2) {
+			if (i == list.length-1) {
+				i --;
+			}
 			if (i == index) {
+				i--;
 				continue;
 			}
-			else {
-				if (list[i].compareTo(list[i-1]) >= 0) {
-					continue;
-				}
-			}
+			
 			int j = i;
-			T cur = list[j];
-			while (j > index && cur.compareTo(list[j-1]) <= 0) {
-				j--;
-				T temp = list[j];
-				list[j] = cur;
-				list[j+1] = temp;
+			if (list[i].compareTo(list[i+1]) > 0) {
+				T temp = list[i];
+				list[i] = list[i+1];
+				list[i+1] = temp;
+			}
+
+			T min = list[i];
+			T max = list[i+1];
+			while (j > index) {
+				if (max.compareTo(list[j-1]) < 0) {
+					list[j+1] = list[j-1];
+					list[j-1] = min;
+					list[j] = max;
+					j--;
+				}
+				else if (min.compareTo(list[j-1]) < 0) {
+					j--;
+					T temp = list[j];
+					list[j] = min;
+					list[j+1] = temp;
+				}
+				else {
+					break;
+				}
 			}
 		}
 		return list;
