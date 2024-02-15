@@ -1,4 +1,4 @@
-package no.hvl.dat102.oblig2.parenteser;
+package no.hvl.dat102.oblig2.del1;
 
 import java.util.Arrays;
 import java.util.EmptyStackException;
