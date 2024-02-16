@@ -1,3 +1,4 @@
+package no.hvl.dat102.oblig2.del2;
 
 import java.util.Arrays;
 import java.util.Random;
